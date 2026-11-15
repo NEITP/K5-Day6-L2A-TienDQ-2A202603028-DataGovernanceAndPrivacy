@@ -78,3 +78,43 @@
 {"ts": "2026-11-14T09:07:46+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_19_2", "before": null, "after": "KEEP", "reason": "", "extra": {}}
 {"ts": "2026-11-14T09:07:46+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_15_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
 {"ts": "2026-11-14T09:07:46+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_05_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_17_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_15_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_06_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:edit", "item_id": "img_01_2", "before": null, "after": "RECAPTURE", "reason": "cần phải thảo luận thêm với LabCoach", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_01_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_17_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_13_2", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_05_3", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:edit", "item_id": "img_19_3", "before": null, "after": "RECAPTURE", "reason": "cần phải thảo luận thêm với LabCoach", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_16_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_03_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_06_3", "before": null, "after": "KEEP", "reason": "cần đánh giá theo khả năng sử dụng của ảnh", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_13_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_16_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_1", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_19_2", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_15_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:36:48+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_05_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_17_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_15_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_06_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:edit", "item_id": "img_01_2", "before": null, "after": "RECAPTURE", "reason": "cần phải thảo luận thêm với LabCoach", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_01_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_17_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_13_2", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_05_3", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:edit", "item_id": "img_19_3", "before": null, "after": "RECAPTURE", "reason": "cần phải thảo luận thêm với LabCoach", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_16_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_03_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_06_3", "before": null, "after": "KEEP", "reason": "cần đánh giá theo khả năng sử dụng của ảnh", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_13_3", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_16_3", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_23_1", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:approve", "item_id": "img_19_2", "before": null, "after": "KEEP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:skip", "item_id": "img_15_2", "before": null, "after": "SKIP", "reason": "", "extra": {}}
+{"ts": "2026-11-15T05:43:15+00:00", "actor": "Đinh Quốc Tiến", "action": "review:escalate", "item_id": "img_05_2", "before": null, "after": "HOLD", "reason": "", "extra": {}}

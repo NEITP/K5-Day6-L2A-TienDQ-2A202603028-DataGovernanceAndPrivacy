@@ -1,25 +1,26 @@
-# T02 Metric Contract — Raw QC Triage
+# T02 · Quy ước metric — Raw QC Triage
 
-This records the evaluator contract used for the experiment. Ground-truth labels are not present in the student checkout, so no evaluation metric is reported or used for tuning.
+Tài liệu này ghi lại quy ước đánh giá của thí nghiệm. Bộ dữ liệu học viên không được cung cấp nhãn ground truth (GT), vì vậy các metric cần GT được ghi là **N/A** và không được dùng để tinh chỉnh thuật toán.
 
-| Item | Frozen protocol |
+| Hạng mục | Quy ước đã chốt |
 |---|---|
-| Track | T02 · Raw QC Triage |
-| Primary metric | Defect Recall@B |
-| Direction | Higher is better |
-| Unit | Image |
-| Formula | TP / (TP + FN); TP = GT defect images in the top B; denominator = all GT defect images in eval |
-| Secondary metric | Precision@B = GT defect images in top B / B |
-| Prediction-to-GT join | Exact `image_id`; evaluator filters to GT `split=eval` |
-| Candidate pool | 40 eval images from the fixed 96-image fixture; scene-group split |
-| Review budget | B=20 |
+| Track | T02 · Raw QC Triage (ưu tiên ảnh cần kiểm tra chất lượng) |
+| Metric chính theo đặc tả | Defect Recall@B (độ bao phủ ảnh lỗi trong B ảnh được ưu tiên) |
+| Chiều đánh giá | Cao hơn là tốt hơn |
+| Đơn vị | Ảnh |
+| Công thức metric chính | TP / (TP + FN); TP là số ảnh có lỗi GT trong top B; mẫu số là tổng số ảnh lỗi GT trong split eval |
+| Metric phụ theo đặc tả | Precision@B = số ảnh có lỗi GT trong top B / B |
+| Ghép dự đoán với nhãn | Ghép chính xác theo `image_id`; evaluator lọc nhãn có `split=eval` |
+| Tập ứng viên | 40 ảnh eval trong fixture cố định gồm 96 ảnh; chia split theo nhóm cảnh |
+| Ngân sách review | B=20 |
 | Seed | 42 |
-| PoC score policy | Fixed weighted anomaly score: blur 0.40, dark 0.25, glare 0.20, compression 0.15; robust feature references from dev by camera/light with fallback |
-| Baseline policy | One global Laplacian sharpness signal, ranked by inverse variance; no label-based threshold fitting |
-| Eval split | `eval`; never used for reference calibration, weights, or policy tuning |
-| Error reporting | Recall misses = GT defects outside top 20; false alarms = non-defects inside top 20; both require GT |
-| Slices | `light` (day/dusk/night) and `camera_id` (cam_A/cam_B) |
-| Uncertainty | Report counts and denominators; if instructor requests intervals, bootstrap over eval images with fixed predictions and disclose small N. Not computable before GT is supplied. |
-| Freeze record | 2026-11-15 · Owner/reviewer: Đinh Quốc Tiến; code/config are in the current working tree and not yet committed under the student's Git identity. |
+| Chính sách điểm PoC | Điểm bất thường có trọng số cố định: blur 0.40, dark 0.25, glare 0.20, compression 0.15; tham chiếu đặc trưng robust tính từ dev theo camera/light, có fallback |
+| Chính sách baseline | Một tín hiệu độ nét Laplacian toàn ảnh, xếp ảnh có phương sai thấp lên trước (`score = -laplacian_variance`); không khớp ngưỡng bằng nhãn |
+| Split đánh giá | `eval`; tuyệt đối không dùng để hiệu chỉnh tham chiếu, trọng số hoặc chính sách |
+| Báo cáo lỗi | Ảnh lỗi bị bỏ sót là ảnh lỗi GT ngoài top 20; báo động giả là ảnh không lỗi GT nằm trong top 20; cả hai cần nhãn GT |
+| Phân lát | `light` (day/dusk/night) và `camera_id` (cam_A/cam_B) |
+| Bất định | Thông thường cần báo số đếm và mẫu số; nếu được yêu cầu, bootstrap trên ảnh eval với dự đoán cố định và nêu rõ N nhỏ. Không thể tính các khoảng này từ bộ học viên vì không có GT. |
+| Trạng thái metric cho bản nộp | Defect Recall@20: N/A; Precision@20: N/A. Đây là giới hạn của dữ liệu được phát cho học viên, không phải metric đang chờ được bổ sung. |
+| Ghi nhận protocol | 2026-11-15 · Chủ sở hữu/người review: Đinh Quốc Tiến; mã nguồn và cấu hình được quản lý trong Git của dự án. |
 
-Budget, pool, seed, and score definitions are held fixed for baseline and PoC. Do not change them after inspecting official eval results. If the baseline or PoC produces zero, report zero directly; do not report a percentage gain from a zero denominator.
+Giữ nguyên ngân sách, tập ứng viên, seed và định nghĩa điểm giữa baseline và PoC. Không thay đổi chúng sau khi xem kết quả eval chính thức. Nếu baseline hoặc PoC cho kết quả metric bằng 0 thì báo cáo trực tiếp giá trị 0; không tính phần trăm cải thiện khi mẫu số bằng 0. Với bản học viên hiện tại, không có GT nên không suy diễn metric từ nhận xét trực quan hay quyết định review thủ công.

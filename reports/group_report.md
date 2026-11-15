@@ -8,9 +8,9 @@
 | Thử thách | T02 · Raw QC Triage |
 | Chủ sở hữu / người review | Đinh Quốc Tiến |
 | Repository | [K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy) |
-| Tag demo / final | `final-24h` · bản nộp hiện tại; metric chính thức cần GT từ giảng viên |
+| Tag demo / final | `final-24h-v2` · bản nộp hiện tại; bộ học viên không phát hành GT |
 | Seed chạy | 42 |
-| Ground truth | Chưa có trong bản checkout học viên; chưa thể tính metric chính thức |
+| Ground truth | Bài học viên không cung cấp GT; Recall/Precision không thuộc phạm vi kết quả có thể tính từ bộ dữ liệu này |
 
 ## 01 · Bài toán
 
@@ -30,7 +30,7 @@ Chính sách quyết định yêu cầu có người review: nếu có SKIP, HOL
 
 Mỗi ảnh có kích thước 320×180. Các cột metadata là `image_id`, `path` tương đối, `camera_id`, `light` và `split`. Manifest ghi nguồn `synthetic:tools/make_fixtures.py (seed 42)`, giấy phép, split/group và SHA-256. Split eval được tách theo nhóm cảnh gốc (`img_XX`), không tách riêng từng ảnh bị biến đổi. Manifest đã được xác minh trong preflight; các lần chạy pipeline cũng vượt qua kiểm tra provenance nghiêm ngặt.
 
-Nhãn ground truth theo đặc tả gồm `none`, `blur`, `glare`, `dark` hoặc `compression`, mức độ 0–2 và `is_defect`. Các nhãn này không có trong bản checkout hiện tại và pipeline không đọc chúng. Bài không dùng ảnh thực hoặc mô hình pretrained.
+Đặc tả bài có nhắc tới nhãn `none`, `blur`, `glare`, `dark` hoặc `compression`, mức độ 0–2 và `is_defect`, nhưng bộ dữ liệu giao cho học viên không chứa các nhãn GT này. Vì vậy pipeline không đọc `gt/` và không thể tính metric cần nhãn. Bài không dùng ảnh thực hoặc mô hình pretrained.
 
 ## 03 · Thiết kế
 
@@ -46,7 +46,7 @@ quyết định batch KEEP / RECAPTURE / HOLD + đầu ra CSV/JSON
 
 PoC tính phương sai Laplacian để nhận biết mờ; thống kê độ sáng và tỷ lệ điểm ảnh tối để nhận biết thiếu sáng; bão hòa toàn ảnh và theo ô nhỏ để nhận biết lóa; cùng chênh lệch cường độ tại biên mỗi 8 pixel làm tín hiệu vết khối JPEG. Độ lệch của các đặc trưng được chuẩn hóa bằng median/MAD từ split `dev`, ưu tiên nhóm camera/light trùng khớp và dùng nhóm dự phòng khi số mẫu ít. Trọng số heuristic cố định: blur 0.40, dark 0.25, glare 0.20, compression 0.15. Không dùng mô hình học máy hoặc truy cập mạng.
 
-Baseline Laplacian toàn cục xếp ảnh có phương sai thấp lên trước (`score = -laplacian_variance`). Đây là baseline một đặc trưng. Hai pipeline dùng cùng seed 42, eval pool và B=20. Chưa tính recall/precision xếp hạng vì chưa có GT của giảng viên.
+Baseline Laplacian toàn cục xếp ảnh có phương sai thấp lên trước (`score = -laplacian_variance`). Đây là baseline một đặc trưng. Hai pipeline dùng cùng seed 42, eval pool và B=20. Recall/Precision được ghi N/A vì bài học viên không được cung cấp GT; không giả định sẽ có GT bổ sung.
 
 ## 04 · Kết quả chạy baseline và PoC
 
@@ -54,13 +54,13 @@ Cả hai lần chạy hoàn tất offline bằng Python 3.14.6 trên Windows 11,
 
 | Metric | Baseline Laplacian toàn cục | PoC nhiều đặc trưng | Trạng thái |
 |---|---:|---:|---|
-| Defect Recall@20 | Chưa có | Chưa có | Thiếu GT |
-| Precision@20 | Chưa có | Chưa có | Thiếu GT |
+| Defect Recall@20 | N/A | N/A | Không có GT trong bộ học viên |
+| Precision@20 | N/A | N/A | Không có GT trong bộ học viên |
 | Số ảnh eval được xếp hạng | 40 | 40 | Cùng held-out pool |
 | Ngân sách review | 20 | 20 | Cùng ngân sách |
 | Thời gian / 100 ảnh đầu vào | 0.337 giây | 1.235 giây | Run info, end-to-end |
 
-Chưa kết luận PoC tốt hơn baseline. Mỗi file dự đoán có đủ 96 ảnh; evaluator lọc `split=eval`. Score và trọng số được giữ cố định trong source hiện tại. Khi có overlay, không tinh chỉnh trọng số dựa trên nhãn eval.
+Chưa kết luận PoC tốt hơn baseline. Mỗi file dự đoán có đủ 96 ảnh; evaluator lọc `split=eval`. Score và trọng số được giữ cố định trong source hiện tại. GT không nằm trong bộ fixture học viên, nên báo cáo runtime, review thủ công và phân tích trực quan; không suy diễn Recall/Precision từ các nguồn này.
 
 ## 05 · Quy trình đánh giá
 
@@ -69,7 +69,7 @@ Chưa kết luận PoC tốt hơn baseline. Mỗi file dự đoán có đủ 96 
 - **Pool:** chỉ dùng split eval, 40 ảnh; B=20. Xếp giảm dần theo score ổn định; seed 42.
 - **Slice:** báo cáo theo điều kiện sáng (`day`, `dusk`, `night`) và camera (`cam_A`, `cam_B`). Eval có 20 ảnh ngày, 4 chạng vạng, 16 ban đêm; 28 ảnh cam_A, 12 ảnh cam_B.
 - **Ngưỡng:** đây là bài toán xếp hạng với ngân sách cố định. Điểm cắt của queue là score ở hạng 20; không chọn ngưỡng chất lượng nhị phân bằng nhãn eval. Thống kê tham chiếu robust của PoC chỉ dùng dev.
-- **Độ bất định:** eval chỉ có 40 ảnh nên cần báo tử số/mẫu số và tránh diễn giải quá mức các chênh lệch nhỏ. Nếu giảng viên yêu cầu, tính khoảng bootstrap từ nhãn evaluator; hiện chưa có GT nên chưa tính.
+- **Độ bất định:** eval có 40 ảnh nhưng không có nhãn lỗi trong bộ học viên, vì vậy không thể tính tử số/mẫu số hay khoảng tin cậy của Recall/Precision. Báo cáo không dùng proxy trực quan thay cho metric GT.
 - **Lệnh đánh giá chính thức:**
 
 ```powershell
@@ -78,7 +78,7 @@ py -3.14 -m src.evaluate --track t02 --pred out\poc\ranked_review.csv --run-name
 py -3.14 -m src.compare reports\metrics_baseline.json reports\metrics_poc.json --out reports\table1_baseline_vs_poc.md
 ```
 
-Các lệnh này cần `fixtures/t02_raw_qc/gt/labels.csv`, hiện chưa có trong repo.
+Các lệnh trên mô tả giao diện evaluator khi có dữ liệu GT phù hợp; chúng không phải lệnh đánh giá chạy được trên bộ học viên này. Bộ dữ liệu học viên không có `fixtures/t02_raw_qc/gt/labels.csv`, nên Defect Recall@20/Precision@20 là N/A theo phạm vi bài, không phải metric đang chờ bổ sung.
 
 ## 06 · Phân tích failure mode
 
@@ -94,17 +94,19 @@ Các ví dụ và phân tích nguyên nhân dựa trên input được ghi trong
 
 Người review là Đinh Quốc Tiến. Queue đã review được lưu tại [review_queue.csv](review_queue.csv); contact sheet được tạo tại `out/poc/contact_sheet.html`. Trong 20 quyết định hiện tại có: 6 KEEP, 2 RECAPTURE, 8 SKIP và 4 HOLD/escalate. Audit log nằm ở `out/poc/audit_log.jsonl`; quyết định nằm trong `out/poc/decision.json`, còn lịch sử CSV được lưu tại [decision_log.csv](decision_log.csv).
 
-Quyết định hiện tại là **HOLD**, mã lý do `REVIEW_INCOMPLETE`: còn 12/20 mục ở trạng thái SKIP hoặc HOLD. Hai mục RECAPTURE không xóa bỏ các mục chưa kết luận. Đây là cổng yêu cầu hoàn tất review, không phải kết luận chất lượng mô hình. Cần xử lý các mục SKIP/HOLD, chạy lại pipeline và lưu snapshot review/audit mới trước khi kết luận batch.
+Quyết định cuối hiện tại là **HOLD**, mã lý do `REVIEW_INCOMPLETE`: reviewer chọn KEEP cho 6 ảnh, RECAPTURE cho 2 ảnh, để SKIP 8 ảnh và HOLD/escalate 4 ảnh. Đây là kết quả bảo thủ của vòng review, không phải kết luận PoC đạt hay không đạt chất lượng. Các lựa chọn cần trao đổi thêm với LabCoach được giữ nguyên, không tự đổi thành KEEP/RECAPTURE.
 
 ## 08 · Chạy lại và kiểm thử
 
 ```powershell
-py -3.14 -m src.main --config configs\lab.yaml --track t02 --output out\poc --run-name poc --offline --seed 42
-py -3.14 -m src.main --config configs\lab.yaml --track t02 --output out\baseline --run-name baseline --pipeline src.examples.t02_laplacian_baseline --offline --seed 42
+py -3.14 -m tools.t02_submission run
+py -3.14 -m tools.t02_submission evaluate
 py -3.14 -m pytest -q
 ```
 
-Các test riêng trong `tests/test_t02_decision_policy.py` kiểm tra ánh xạ quyết định reviewer và ghi audit, review chưa hoàn tất, mục trong queue chưa được review, RECAPTURE và trường hợp tất cả KEEP. `py -3.14 -m pytest -q` hoàn tất không lỗi; các test cần GT được skip vì chưa cài overlay giảng viên. `py -3.14 -m tools.preflight` báo 0 lỗi và 2 cảnh báo tùy chọn (không có `data/real/` và mô hình tùy chọn).
+Lệnh `run` chạy cả baseline Laplacian và PoC với cùng seed, pool và chế độ offline. Lệnh `evaluate` khi thiếu GT (như trong gói học viên) báo Recall@20/Precision@20 là N/A; nếu môi trường có GT, lệnh chạy evaluator cho cả hai và tạo bảng so sánh.
+
+Các test riêng trong `tests/test_t02_decision_policy.py` kiểm tra ánh xạ quyết định reviewer và ghi audit, review chưa hoàn tất, mục trong queue chưa được review, RECAPTURE và trường hợp tất cả KEEP. `py -3.14 -m pytest -q` hoàn tất không lỗi; các test evaluator cần GT được skip theo thiết kế vì nhãn không được phát hành trong bộ học viên. `py -3.14 -m tools.preflight` báo 0 lỗi và 2 cảnh báo tùy chọn (không có `data/real/` và mô hình tùy chọn).
 
 ## 09 · Giới hạn và sử dụng có trách nhiệm
 
@@ -116,7 +118,7 @@ Các test riêng trong `tests/test_t02_decision_policy.py` kiểm tra ánh xạ 
 
 ## 10 · Bằng chứng đóng góp
 
-Người review và chủ sở hữu dự án được ghi nhận là Đinh Quốc Tiến. Bằng chứng review là `reports/review_queue.csv`. Phần triển khai được thực hiện với hỗ trợ AI theo yêu cầu của học viên; đóng góp cá nhân của học viên gồm review, yêu cầu dự án và cấu hình metadata. Commit có phần triển khai chính: `5266907897473653410ee36cec79a2ccaec99ce1`. Chưa tạo tag final vì còn thiếu GT và còn quyết định review chưa chốt.
+Người review và chủ sở hữu dự án được ghi nhận là Đinh Quốc Tiến. Bằng chứng review là `reports/review_queue.csv`. Phần triển khai được thực hiện với hỗ trợ AI theo yêu cầu của học viên; đóng góp cá nhân của học viên gồm review, yêu cầu dự án và cấu hình metadata. Commit có phần triển khai chính: `5266907897473653410ee36cec79a2ccaec99ce1`. Tag nộp cuối `final-24h-v2` được tạo cho bản cập nhật này; tag `final-24h` cũ vẫn được giữ nguyên. Kết quả quyết định vẫn là HOLD (`REVIEW_INCOMPLETE`) theo lựa chọn reviewer; GT không phải đầu việc còn thiếu của bộ học viên.
 
 ## 11 · Tài liệu tham khảo
 
@@ -131,7 +133,7 @@ Người review và chủ sở hữu dự án được ghi nhận là Đinh Qu�
 ## Bảng 3 · Checklist chốt khi nộp
 
 - [x] Link repo và tag cuối cùng trong README; input fixture là dữ liệu tổng hợp, không có PII thật.
-- [ ] Đúng 1 lệnh run, 1 lệnh evaluate, 1 lệnh tests; không cần download khi chạy.
-- [ ] Có baseline/PoC metrics, ít nhất 1 failure case, reviewer evidence và decision log.
-- [x] Có license/source provenance, data splits, seed, offline environment và ghi rõ GT/eval N (GT chưa được cung cấp; eval N=40).
+- [x] Có đúng một lệnh run (tạo baseline và PoC), một lệnh evaluate và một lệnh tests; cả quy trình chạy không tải dữ liệu. Evaluate ghi N/A khi bộ học viên không có GT.
+- [x] Có kết quả chạy baseline/PoC, failure case, reviewer evidence và decision log; Recall/Precision ghi N/A vì bài học viên không cung cấp GT.
+- [x] Có license/source provenance, data splits, seed, offline environment và ghi rõ GT/eval N (không phân phối GT; eval N=40).
 - [x] Mỗi thành viên có ít nhất 1 commit thực chất và được nêu minh bạch trong bảng đóng góp (`5266907`).

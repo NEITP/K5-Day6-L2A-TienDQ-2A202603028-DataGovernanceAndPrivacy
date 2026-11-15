@@ -51,13 +51,15 @@ include corrupted examples that shift its reference. For instance,
 image is visibly blurred and was marked SKIP in the current review, so it
 needs a human KEEP/RECAPTURE decision rather than automatic attribution to
 camera optics. The median comparison alone cannot distinguish softer optics
-from actual blur; inspect matched clean images and obtain GT labels.
+from actual blur. Since the student fixture contains no GT labels, this remains
+a visual hypothesis rather than a confirmed false alarm or miss.
 
 ## Current reviewer disposition
 
 The current CSV has 2 RECAPTURE, 6 KEEP, 8 SKIP, and 4 HOLD among the 20
 queued images. In particular, dark-scene candidates should not all be treated
-as unusable solely because of brightness. Keep the batch decision at HOLD
-until SKIP/HOLD rows are resolved. After the instructor GT is available,
-report Recall@20 and Precision@20 for both the global Laplacian baseline and
-the PoC without retuning on eval.
+as unusable solely because of brightness. The batch decision remains HOLD
+until SKIP/HOLD rows are resolved. The student fixture does not include GT, so
+Recall@20 and Precision@20 are not computable for this submission; the report
+records runtime and manual/visual review evidence instead, without treating it
+as a substitute for labeled evaluation.
