@@ -1,2 +1,2 @@
 member,git_author_name,git_email,role,modules_files,commit_shas,evidence_note,presenter
-Đinh Quốc Tiến,Đinh Quốc Tiến,dinhquoctien230302@gmail.com,Project owner and human reviewer,reports/review_queue.csv; configs/lab.yaml,not yet committed,"Manual review and pipeline requirements supplied by student; implementation was AI-assisted and remains an uncommitted working-tree diff.",Yes
+Đinh Quốc Tiến,Đinh Quốc Tiến,dinhquoctien230302@gmail.com,Chủ dự án và người review,"reports/review_queue.csv; configs/lab.yaml; src/pipeline.py; reports/group_report.md",5266907897473653410ee36cec79a2ccaec99ce1,"Học viên cung cấp yêu cầu và quyết định review; triển khai có hỗ trợ AI; commit chứa thay đổi dự án T02.",Yes
