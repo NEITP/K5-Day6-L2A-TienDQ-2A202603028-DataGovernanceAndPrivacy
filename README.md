@@ -26,6 +26,8 @@ Chọn challenge: sửa `configs/lab.yaml` (`track`, `track_config`, `owner`, `g
 
 Repository của nhóm: [K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy). Chủ sở hữu/reviewer: Đinh Quốc Tiến. Trên máy Windows này, dùng `py -3.14` vì extension pandas trong môi trường Python 3.11 bị Windows Application Control chặn.
 
+Tag nộp cuối: [final-24h](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy/tree/final-24h). Metric chính thức vẫn cần overlay GT của giảng viên.
+
 Chạy PoC và baseline cùng fixture, seed và ngân sách B=20:
 
 ```powershell

@@ -8,7 +8,7 @@
 | Thử thách | T02 · Raw QC Triage |
 | Chủ sở hữu / người review | Đinh Quốc Tiến |
 | Repository | [K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy) |
-| Tag demo / final | Chưa tạo; commit triển khai `5266907` chưa được tag |
+| Tag demo / final | `final-24h` · bản nộp hiện tại; metric chính thức cần GT từ giảng viên |
 | Seed chạy | 42 |
 | Ground truth | Chưa có trong bản checkout học viên; chưa thể tính metric chính thức |
 
@@ -130,7 +130,7 @@ Người review và chủ sở hữu dự án được ghi nhận là Đinh Qu�
 
 ## Bảng 3 · Checklist chốt khi nộp
 
-- [ ] Link repo và tag cuối cùng trong README; input mẫu không chứa PII thật. (Link đã thêm; chưa có tag final.)
+- [x] Link repo và tag cuối cùng trong README; input fixture là dữ liệu tổng hợp, không có PII thật.
 - [ ] Đúng 1 lệnh run, 1 lệnh evaluate, 1 lệnh tests; không cần download khi chạy.
 - [ ] Có baseline/PoC metrics, ít nhất 1 failure case, reviewer evidence và decision log.
 - [x] Có license/source provenance, data splits, seed, offline environment và ghi rõ GT/eval N (GT chưa được cung cấp; eval N=40).
