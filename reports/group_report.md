@@ -8,7 +8,7 @@
 | Thử thách | T02 · Raw QC Triage |
 | Chủ sở hữu / người review | Đinh Quốc Tiến |
 | Repository | [K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy) |
-| Tag demo / final | `final-24h-v2` · bản nộp hiện tại; bộ học viên không phát hành GT |
+| Tag demo / final | `final-24h-v3` · bản nộp hiện tại; bộ học viên không phát hành GT |
 | Seed chạy | 42 |
 | Ground truth | Bài học viên không cung cấp GT; Recall/Precision không thuộc phạm vi kết quả có thể tính từ bộ dữ liệu này |
 
@@ -118,7 +118,7 @@ Các test riêng trong `tests/test_t02_decision_policy.py` kiểm tra ánh xạ 
 
 ## 10 · Bằng chứng đóng góp
 
-Người review và chủ sở hữu dự án được ghi nhận là Đinh Quốc Tiến. Bằng chứng review là `reports/review_queue.csv`. Phần triển khai được thực hiện với hỗ trợ AI theo yêu cầu của học viên; đóng góp cá nhân của học viên gồm review, yêu cầu dự án và cấu hình metadata. Commit có phần triển khai chính: `5266907897473653410ee36cec79a2ccaec99ce1`. Tag nộp cuối `final-24h-v2` được tạo cho bản cập nhật này; tag `final-24h` cũ vẫn được giữ nguyên. Kết quả quyết định vẫn là HOLD (`REVIEW_INCOMPLETE`) theo lựa chọn reviewer; GT không phải đầu việc còn thiếu của bộ học viên.
+Người review và chủ sở hữu dự án được ghi nhận là Đinh Quốc Tiến. Bằng chứng review là `reports/review_queue.csv`. Phần triển khai được thực hiện với hỗ trợ AI theo yêu cầu của học viên; đóng góp cá nhân của học viên gồm review, yêu cầu dự án và cấu hình metadata. Commit có phần triển khai chính: `5266907897473653410ee36cec79a2ccaec99ce1`. Tag nộp cuối `final-24h-v3` được tạo cho bản cập nhật này; các tag cũ được giữ nguyên. Kết quả quyết định vẫn là HOLD (`REVIEW_INCOMPLETE`) theo lựa chọn reviewer; GT không phải đầu việc còn thiếu của bộ học viên.
 
 ## 11 · Tài liệu tham khảo
 
