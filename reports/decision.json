@@ -1,0 +1,26 @@
+{
+  "status": "HOLD",
+  "reason_code": "REVIEW_INCOMPLETE",
+  "reason": "Human review is incomplete: 12 unresolved and 0 unreviewed queue items.",
+  "owner": "Đinh Quốc Tiến",
+  "scope": "t02",
+  "evidence": [
+    "out\\poc\\ranked_review.csv",
+    "out\\poc\\review_queue.csv",
+    "out\\poc\\review_queue_reviewed.csv"
+  ],
+  "metrics": {
+    "reviewed_actions": {
+      "SKIP": 8,
+      "KEEP": 6,
+      "HOLD": 4,
+      "RECAPTURE": 2
+    },
+    "n_items": 96,
+    "review_budget": 20,
+    "unresolved_review_items": 12,
+    "unreviewed_queue_items": 0
+  },
+  "ts": "2026-11-14T09:07:46+00:00",
+  "canonical": "HOLD"
+}

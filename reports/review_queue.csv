@@ -1,0 +1,21 @@
+rank,item_id,score,reason,suggested_action,slice,evidence_path,reviewer,reviewer_decision,override_value,review_note,reviewed_at
+1,img_17_3,0.519851,dark,,,images/img_17_3.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+2,img_23_3,0.519359,dark,,,images/img_23_3.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+3,img_15_3,0.455866,dark,,,images/img_15_3.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+4,img_06_2,0.400385,dark,,,images/img_06_2.jpg,Đinh Quốc Tiến,escalate,,,2026-11-14T08:56:47.200Z
+5,img_01_2,0.399523,dark,,,images/img_01_2.jpg,Đinh Quốc Tiến,edit,recapture,cần phải thảo luận thêm với LabCoach,2026-11-14T08:56:47.200Z
+6,img_01_3,0.368454,compression,,,images/img_01_3.jpg,Đinh Quốc Tiến,approve,,,2026-11-14T08:56:47.200Z
+7,img_17_2,0.345697,glare,,,images/img_17_2.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+8,img_13_2,0.307832,compression,,,images/img_13_2.jpg,Đinh Quốc Tiến,approve,,,2026-11-14T08:56:47.200Z
+9,img_05_3,0.293317,glare,,,images/img_05_3.jpg,Đinh Quốc Tiến,escalate,,,2026-11-14T08:56:47.200Z
+10,img_19_3,0.291904,blur,,,images/img_19_3.jpg,Đinh Quốc Tiến,edit,recapture,cần phải thảo luận thêm với LabCoach,2026-11-14T08:56:47.200Z
+11,img_16_2,0.282439,blur,,,images/img_16_2.jpg,Đinh Quốc Tiến,escalate,,,2026-11-14T08:56:47.200Z
+12,img_03_3,0.277604,compression,,,images/img_03_3.jpg,Đinh Quốc Tiến,approve,,,2026-11-14T08:56:47.200Z
+13,img_06_3,0.268246,glare,,,images/img_06_3.jpg,Đinh Quốc Tiến,approve,,cần đánh giá theo khả năng sử dụng của ảnh,2026-11-14T08:56:47.200Z
+14,img_23_2,0.267807,compression,,,images/img_23_2.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+15,img_13_3,0.251252,blur,,,images/img_13_3.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+16,img_16_3,0.240203,compression,,,images/img_16_3.jpg,Đinh Quốc Tiến,approve,,,2026-11-14T08:56:47.200Z
+17,img_23_1,0.234007,compression,,,images/img_23_1.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+18,img_19_2,0.233554,compression,,,images/img_19_2.jpg,Đinh Quốc Tiến,approve,,,2026-11-14T08:56:47.200Z
+19,img_15_2,0.222108,blur,,,images/img_15_2.jpg,Đinh Quốc Tiến,skip,,,2026-11-14T08:56:47.200Z
+20,img_05_2,0.215607,compression,,,images/img_05_2.jpg,Đinh Quốc Tiến,escalate,,,2026-11-14T08:56:47.200Z

@@ -1,24 +1,25 @@
-# Metric contract (khai báo bắt buộc — chốt ở phút 30, trước khi chạy eval)
+# T02 Metric Contract — Raw QC Triage
 
-> Các metric chuẩn đã được cài trong `src/metrics/tracks.py`. File này là nơi nhóm **cam kết** cách dùng chúng.
-> Không đổi testset, threshold hay trọng số sau khi đã thấy kết quả eval.
+This records the evaluator contract used for the experiment. Ground-truth labels are not present in the student checkout, so no evaluation metric is reported or used for tuning.
 
-| Mục | Khai báo của nhóm |
+| Item | Frozen protocol |
 |---|---|
-| Track | T__ |
-| Primary metric (tên đúng như evaluator in ra) | |
-| Tăng tốt hay giảm tốt? | higher / lower |
-| Đơn vị đánh giá (image / region / pair / release / batch / case …) | |
-| Công thức + numerator / denominator | |
-| Cách ghép prediction ↔ GT (IoU? id? tolerance?) | |
-| Candidate pool cố định | |
-| Review budget B / K | |
+| Track | T02 · Raw QC Triage |
+| Primary metric | Defect Recall@B |
+| Direction | Higher is better |
+| Unit | Image |
+| Formula | TP / (TP + FN); TP = GT defect images in the top B; denominator = all GT defect images in eval |
+| Secondary metric | Precision@B = GT defect images in top B / B |
+| Prediction-to-GT join | Exact `image_id`; evaluator filters to GT `split=eval` |
+| Candidate pool | 40 eval images from the fixed 96-image fixture; scene-group split |
+| Review budget | B=20 |
 | Seed | 42 |
-| Threshold policy (chọn trên dev như thế nào) | |
-| Eval split (không dùng để tune) | |
-| Chỉ số lỗi xấu (miss / false alarm / false reject) | |
-| Slices sẽ báo cáo (≥2) | |
-| Cách báo độ bất định khi N nhỏ (Wilson CI / bootstrap) | |
-| Ngày giờ chốt + người chốt | |
+| PoC score policy | Fixed weighted anomaly score: blur 0.40, dark 0.25, glare 0.20, compression 0.15; robust feature references from dev by camera/light with fallback |
+| Baseline policy | One global Laplacian sharpness signal, ranked by inverse variance; no label-based threshold fitting |
+| Eval split | `eval`; never used for reference calibration, weights, or policy tuning |
+| Error reporting | Recall misses = GT defects outside top 20; false alarms = non-defects inside top 20; both require GT |
+| Slices | `light` (day/dusk/night) and `camera_id` (cam_A/cam_B) |
+| Uncertainty | Report counts and denominators; if instructor requests intervals, bootstrap over eval images with fixed predictions and disclose small N. Not computable before GT is supplied. |
+| Freeze record | 2026-11-15 · Owner/reviewer: Đinh Quốc Tiến; code/config are in the current working tree and not yet committed under the student's Git identity. |
 
-Nếu baseline = 0 thì ghi rõ "baseline = 0" thay vì phần trăm cải thiện.
+Budget, pool, seed, and score definitions are held fixed for baseline and PoC. Do not change them after inspecting official eval results. If the baseline or PoC produces zero, report zero directly; do not report a percentage gain from a zero denominator.

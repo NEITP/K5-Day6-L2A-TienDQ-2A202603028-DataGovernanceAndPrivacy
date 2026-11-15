@@ -1,14 +1,13 @@
-# reports/
+# T02 reports and evidence
 
-| File | Ai tạo | Cách tạo |
-|---|---|---|
-| `group_report.md` | nhóm | điền template |
-| `metric_contract.md` | nhóm | điền ở phút 30 |
-| `metrics_baseline.json` | **script** | `python -m src.evaluate --track tXX --pred out/baseline/<file> --run-name baseline --out reports/metrics_baseline.json` |
-| `metrics_poc.json` | **script** | `python -m src.evaluate --track tXX --pred out/poc/<file> --run-name poc --out reports/metrics_poc.json` |
-| `table1_baseline_vs_poc.md` | **script** | `python -m src.compare reports/metrics_baseline.json reports/metrics_poc.json --out reports/table1_baseline_vs_poc.md` |
-| `review_queue.csv` | pipeline + reviewer | copy từ `out/poc/review_queue.csv` sau khi review (có cột reviewer/decision) |
-| `decision_log.csv` | pipeline | copy từ `out/poc/decision_log.csv` |
-| `team_contributions.csv` | nhóm | khớp với `git shortlog -sne --all` |
-
-Các file metrics/table **không được sửa tay** — giảng viên sẽ chạy lại lệnh để đối chiếu.
+| File | Purpose / source |
+|---|---|
+| `group_report.md` | T02 report, protocol, run summary, limitations and pending items |
+| `metric_contract.md` | Frozen metric, split, pool, budget and scoring protocol |
+| `t02_failure_modes.md` | Input-only analysis of night, local glare and cam_B cases |
+| `t02_failure_examples.png` | Annotated input-only image montage supporting the failure analysis |
+| `review_queue.csv` | Snapshot of the reviewed 20-item queue exported by the reviewer |
+| `decision.json` / `decision_log.csv` | Batch decision and decision history copied from `out/poc/` |
+| `audit_log.jsonl` | Append-only reviewer and pipeline audit copied from `out/poc/` |
+| `team_contributions.csv` | Current author and review evidence; update commit SHA after committing |
+| `metrics_baseline.json`, `metrics_poc.json`, `table1_baseline_vs_poc.md` | Generate with `src.evaluate` / `src.compare` when instructor GT is available; do not edit by hand |

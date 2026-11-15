@@ -22,6 +22,28 @@ make baseline TRACK=t11      # ghi out/baseline/; repo học viên không có gt
 
 Chọn challenge: sửa `configs/lab.yaml` (`track`, `track_config`, `owner`, `group_id`), đọc `docs/tracks/TXX.md`.
 
+## T02 · Nhóm G04 — Raw QC Triage
+
+Repository của nhóm: [K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy](https://github.com/NEITP/K5-Day6-L2A-TienDQ-2A202603028-DataGovernanceAndPrivacy). Chủ sở hữu/reviewer: Đinh Quốc Tiến. Trên máy Windows này, dùng `py -3.14` vì extension pandas trong môi trường Python 3.11 bị Windows Application Control chặn.
+
+Chạy PoC và baseline cùng fixture, seed và ngân sách B=20:
+
+```powershell
+py -3.14 -m src.main --config configs\lab.yaml --track t02 --output out\poc --run-name poc --offline --seed 42
+py -3.14 -m src.main --config configs\lab.yaml --track t02 --output out\baseline --run-name baseline --pipeline src.examples.t02_laplacian_baseline --offline --seed 42
+py -3.14 -m pytest -q
+```
+
+Sau khi giảng viên cung cấp `fixtures/t02_raw_qc/gt/labels.csv`, tính metric và so sánh:
+
+```powershell
+py -3.14 -m src.evaluate --track t02 --pred out\baseline\ranked_review.csv --run-name baseline --out reports\metrics_baseline.json
+py -3.14 -m src.evaluate --track t02 --pred out\poc\ranked_review.csv --run-name poc --out reports\metrics_poc.json
+py -3.14 -m src.compare reports\metrics_baseline.json reports\metrics_poc.json --out reports\table1_baseline_vs_poc.md
+```
+
+Mở `out/poc/contact_sheet.html` để xem queue; quyết định đã xuất được lưu ở `reports/review_queue.csv`. Tóm tắt kết quả, giới hạn và trạng thái nộp nằm trong [`reports/group_report.md`](reports/group_report.md).
+
 ## 2. Contract lệnh (giảng viên sẽ chạy đúng các lệnh này)
 
 | Lệnh | Điều kiện PASS |

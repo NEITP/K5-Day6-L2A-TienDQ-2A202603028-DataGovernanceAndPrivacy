@@ -14,11 +14,16 @@ from src.common.gt_guard import GroundTruthAccessError, disable_gt_guard, enable
 from src.common.offline import NetworkBlockedError, disable_offline_guard, enable_offline_guard
 
 
-def test_template_pipeline_fails_clearly_not_silently(tmp_path):
+def test_t02_pipeline_end_to_end(tmp_path):
     rc = runner.main(["--track", "t02", "--output", str(tmp_path), "--offline"])
-    assert rc == 3                                   # NotImplemented -> explicit exit code
+    assert rc == 0
     info = json.loads((tmp_path / "run_info.json").read_text())
-    assert info["status"] == 3 and info["seed"] == 42
+    assert info["status"] == 0 and info["seed"] == 42
+    pred = pd.read_csv(tmp_path / "ranked_review.csv")
+    queue = pd.read_csv(tmp_path / "review_queue.csv")
+    assert len(pred) == 96 and {"image_id", "score"}.issubset(pred.columns)
+    assert len(queue) == 20
+    assert (tmp_path / "decision.json").exists()
 
 
 def _run_baseline(out):
